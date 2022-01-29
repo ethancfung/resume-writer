@@ -12,6 +12,7 @@ import {
 } from '@chakra-ui/vue'
 
 import EditorJs from '@editorjs/editorjs';
+import Divider from '~/plugins/editor/divider'
 
 export default {
     name: 'CodexEditor',
@@ -42,7 +43,10 @@ export default {
         }
     ],
     "version": "2.22.2"
-}
+},
+            tools: {
+                divider: Divider
+            }
             })
         }
     },

@@ -2,16 +2,13 @@
   <div class="container">
     <codex-editor ref="editor"></codex-editor>
     <CButton class="save" @click="save">Save</CButton>
-    <CButton @click="debug">Save</CButton>
   </div>
 </template>
 
 <script lang="js">
 import edjsParser from 'editorjs-parser'
 import * as cheerio from 'cheerio'
-
-//import generatePdf from 'html-pdf-node';
-//const html_pdf = require('html-pdf-node');
+import customParsers from '~/plugins/editor/parsers.js'
 
 export default {
   name: 'IndexPage',
@@ -44,12 +41,19 @@ export default {
 
       async save() {
 
-        const parser = new edjsParser();
+        const parser = new edjsParser(undefined, customParsers);
         let data = await this.$refs.editor.$data.editor.save()
 
         console.log(data)
 
         for (let i = 0; i < data.blocks.length - 1; i++) {
+
+            let cur = data.blocks[i]
+            let next = data.blocks[i+1]
+
+            if (cur.type === 'divider' || next.type === 'divider') {
+                continue
+            }
 
             let first = this.findIn(data.blocks[i], i)
             let second = this.findIn(data.blocks[i+1], i+1)
@@ -62,9 +66,6 @@ export default {
             data.blocks[i].data.text = data.blocks[i].data.text + '<br />'.repeat(space)
         }
 
-        console.log(data)
-
-
         let markup = parser.parse(data);
         console.log(markup)
 
@@ -75,7 +76,6 @@ export default {
         }
 
         const html2pdf = require('html2pdf.js')
-
 
         var worker = html2pdf();
         var worker = html2pdf().set(options).from(markup + '<br />').save();
