@@ -16,7 +16,10 @@ module.exports = {
   ],
   // add your custom rules here
   rules: {
+    'eol-last': 'off',
     indent: ['warning', 4],
-    'no-unused-vars': 'warning'
+    'no-unused-vars': 'warning',
+    semi: 'warning',
+    'space-before-function-paren': 'off'
   }
 }
