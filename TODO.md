@@ -1,0 +1,6 @@
+- Adding Blocks
+- Creating new Blocks
+- Load from static json
+- Blocks with variables (i.e company name/recuriter name)
+- Proper page sizing
+- Tracking spaces/newlines

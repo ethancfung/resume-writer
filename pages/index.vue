@@ -22,6 +22,7 @@ export default {
         let markup = parser.parse(data);
         console.log(markup)
 
+
         const options = {
             margin:       1,
             html2canvas:  { scale: 2 },
@@ -32,7 +33,7 @@ export default {
 
 
         var worker = html2pdf();
-        var worker = html2pdf().set(options).from(markup + '<br />').save();
+        //var worker = html2pdf().set(options).from(markup + '<br />').save();
     }
   }
 }
