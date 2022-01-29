@@ -79,10 +79,6 @@ export default {
 
         var worker = html2pdf();
         var worker = html2pdf().set(options).from(markup + '<br />').save();
-    },
-
-    debug() {
-        console.log(this.$refs.editor.$data.editor)
     }
   }
 }
