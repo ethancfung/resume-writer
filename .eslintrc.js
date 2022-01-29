@@ -15,5 +15,8 @@ module.exports = {
   plugins: [
   ],
   // add your custom rules here
-  rules: {}
+  rules: {
+    indent: ['warning', 4],
+    'no-unused-vars': 'warning'
+  }
 }
