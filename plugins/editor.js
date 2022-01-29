@@ -14,6 +14,17 @@ class Editor {
         this.cdx_editor = new EditorJs(this.config);
     }
 
+    get editor() {
+
+        if (this.cdx_editor === undefined) {
+            this.init();
+        }
+
+        this.cdx_editor.isReady.then(() => {
+            return this.cdx_editor;
+        })
+    }
+
     get data() {
 
         if (this.cdx_editor === undefined) {
@@ -23,9 +34,13 @@ class Editor {
         return this.cdx_editor.data;
     }
 
-    save() {
+    async save() {
 
-        
+        if (this.cdx_editor === undefined) {
+            throw new Error("Editor is not intialized yet!")
+        }
+
+        return await this.cdx_editor.save();        
     }
 }
 
