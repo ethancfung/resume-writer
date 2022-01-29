@@ -12,6 +12,7 @@ import {
 } from '@chakra-ui/vue'
 
 import EditorJs from '@editorjs/editorjs';
+import Header from '@editorjs/header'
 import MarkerTool from '~/plugins/MarkerTool'
 export default {
     name: 'CodexEditor',
@@ -29,8 +30,9 @@ export default {
             editor: new EditorJs({
                 holder: 'editor',
                 tools:{
-                    markertool: MarkerTool
-                }
+                    markertool: MarkerTool,
+                    header:Header
+                    }
             })
         }
     }
@@ -56,5 +58,9 @@ export default {
 
 .ce-block:first-child {
     margin-top: 88px;
+}
+.ce-header {
+    font-size: 1.5em;
+    font-weight: bold;
 }
 </style>
