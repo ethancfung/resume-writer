@@ -12,7 +12,7 @@ import {
 } from '@chakra-ui/vue'
 
 import EditorJs from '@editorjs/editorjs';
-
+import MarkerTool from '~/plugins/MarkerTool'
 export default {
     name: 'CodexEditor',
     components: {
@@ -27,7 +27,10 @@ export default {
     data() {
         return {
             editor: new EditorJs({
-                holder: 'editor'
+                holder: 'editor',
+                tools:{
+                    markertool: MarkerTool
+                }
             })
         }
     }
