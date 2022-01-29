@@ -33,7 +33,7 @@ export default {
 
 
         var worker = html2pdf();
-        //var worker = html2pdf().set(options).from(markup + '<br />').save();
+        var worker = html2pdf().set(options).from(markup + '<br />').save();
     }
   }
 }
